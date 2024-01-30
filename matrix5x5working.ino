@@ -18,6 +18,7 @@ const byte col[] = {COL1, COL2, COL3, COL4,COL5};
 
 //(1 = OFF, 0 = ON)
 byte Heart[] = {B11011,B10101,B01110,B01010,B10101};
+byte Pumkin[] = {B10001,B01110,B01110,B10001,B11011};
 byte P[] = {B01111,B01111,B00001,B01110,B00001};
 byte O[] = {B10001,B01110,B01110,B01110,B10001};
 byte L[] = {B00000,B01110,B01111,B01111,B01111};
@@ -29,6 +30,8 @@ byte H[] = {B01110,B01110,B00000,B01110,B01110};
 byte G[] = {B00000,B01110,B01100,B01111,B00000};
 byte A[] = {B01110,B01110,B00000,B01110,B10001};
 byte B[] = {B00001,B01110,B00001,B01110,B00001};
+byte R[] = {B01110,B01110,B00001,B01110,B00001};
+byte D[] = {B00001,B01110,B01110,B01110,B00001};
 
 float time = 0;
 
@@ -45,7 +48,9 @@ void loop() {
   time+=1;
   // Mishi();
   // Polly();
-  Gabi();
+  // Gabi();
+  // Radi();
+  display(Pumkin);
 }
 
 void display(byte buffer[]) { 
@@ -58,6 +63,26 @@ void display(byte buffer[]) {
       digitalWrite(col[a], 1);
     }
     digitalWrite(rows[i], LOW);
+  }
+}
+
+void Radi(){
+  if(time < 100){
+    display(R);
+  }else if(time < 200){
+    display(A);
+  }
+  else if(time < 300){
+    display(D);
+  }
+  else if(time < 400){
+    display(I);
+  }
+  else if(time < 500){
+    display(Heart);
+  }
+  else if(time < 600){
+    time = 0;
   }
 }
 
